@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from './components/Box';
 
-function App() {
+const containerStyles: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100vh',
+  width: '100vw',
+  backgroundColor: '#fafafa',
+};
+
+const boxStyles: React.CSSProperties = {
+  width: '100px',
+  height: '100px',
+  backgroundColor: '#f00',
+};
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={containerStyles}>
+      <Box style={boxStyles}></Box>
     </div>
   );
-}
-
-export default App;
+};
