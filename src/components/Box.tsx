@@ -1,7 +1,8 @@
-import React, { Ref, useState } from "react";
-import { PopoverMenu } from "./popover";
-import { motion } from "framer-motion";
+import React, { Ref, useState } from 'react';
+import { PopoverMenu } from './popover';
+import { motion } from 'framer-motion';
 
+// Ignored the types in these props.
 type Props = {
   clone?: any;
   remove?: any;
@@ -10,25 +11,27 @@ type Props = {
 };
 
 const boxStyles: React.CSSProperties = {
-  width: "w-[100px]",
-  height: "h-[100px]",
-  backgroundColor: "bg-[#f00]",
-  borderRadius: "rounded-[5px]",
+  width: 'w-[100px]',
+  height: 'h-[100px]',
+  backgroundColor: 'bg-[#f00]',
+  borderRadius: 'rounded-[5px]',
 };
 
 export const Box = (props: Props) => {
-  const [label, setLabel] = useState(props?.properties?.label || "Bar");
+  const [label, setLabel] = useState(props?.properties?.label || 'Bar');
   const [color, setColor] = useState(
-    props?.properties?.color || boxStyles.backgroundColor
+    // I like the use of optional chaining here but props will always exist.
+    // props.properties?.color would be better
+    props?.properties?.color || boxStyles.backgroundColor,
   );
   const [width, setWidth] = useState(
-    props?.properties?.width || boxStyles.width
+    props?.properties?.width || boxStyles.width,
   );
   const [height, setHeight] = useState(
-    props?.properties?.height || boxStyles.height
+    props?.properties?.height || boxStyles.height,
   );
   const [borderRadius, setBorderRadius] = useState(
-    props?.properties?.shape || boxStyles.borderRadius
+    props?.properties?.shape || boxStyles.borderRadius,
   );
 
   return (
@@ -36,9 +39,9 @@ export const Box = (props: Props) => {
       className={`${width} ${height} ${color} ${borderRadius} flex items-center  transition-all`}
     >
       <input
-        value={`${label.slice(0, 3)}`}
+        value={`${label.slice(0, 3)}`} // This should have been dynamic based on the size of the shape.
         readOnly
-        type="text"
+        type='text'
         className={`text-sm w-full bg-transparent pointer-events-none font-semibold p-1 absolute font-bold`}
       />
 
